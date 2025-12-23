@@ -114,15 +114,29 @@ const Notice = () => {
       </form>
 
       {/* ✅ Notices List */}
-      <div className="grid md:grid-cols-2 gap-4">
-        {notices.map((notice) => (
-          <div key={notice._id} className="bg-white p-4 rounded shadow border">
+      <div className="grid md:grid-cols-2 gap-4 mt-3 latest-notice-wrapper">
+        {notices.map((notice, index) => (
+          <div
+            key={notice._id}
+            className="relative bg-white p-4 rounded shadow border"
+          >
+            {/* 🔥 LATEST TAG */}
+            {index === 0 && (
+              <span
+                className="absolute -top-3 left-3 bg-blue-500 text-white 
+text-[10px] font-semibold px-3 py-1 rounded-full shadow-md border border-white"
+              >
+                LATEST
+              </span>
+            )}
+
             <div className="flex justify-between items-start">
               <div>
-                <h3 className="font-semibold text-lg underline underline-offset-4">
+                <h3 className="font-semibold text-base md:text-lg text-gray-800">
                   {notice.title}
                 </h3>
-                <p className="text-xs text-gray-400">
+
+                <p className="text-[11px] text-gray-400 mt-1">
                   {new Date(notice.createdAt).toLocaleString("en-IN")}
                 </p>
               </div>
@@ -131,7 +145,7 @@ const Notice = () => {
               {isAdmin && (
                 <button
                   onClick={() => deleteNotice(notice._id)}
-                  className="text-red-500 text-sm hover:underline"
+                  className="text-red-500 text-xs font-medium hover:text-red-600"
                 >
                   Delete
                 </button>

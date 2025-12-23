@@ -1,37 +1,39 @@
+import "./App.css";
 import BuildingForm from "./component/BuildingForm";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import Register from "./pages/member/Register";
 import Login from "./component/Login.jsx";
 import SocietyMemberForm from "./component/SocietyMemberForm";
 import Home from "./component/Home";
-import Flat from "./pages/member/Flat";
-import FlatDetail from "./component/FlatDetail";
-import Shop from "./pages/member/Shop";
-import Maintaince from "./pages/member/Maintenance";
-import Complaint from "./pages/member/Complaint";
-import ShopDetails from "./component/ShopDetails";
-import Expenses from "./pages/member/Expenses";
+
+import Maintaince from "./pages/maintenance/Maintenance.jsx";
+import Complaint from "./pages/complaint/Complaint.jsx";
+import Expenses from "./pages/expense/Expenses.jsx";
 import MemberApproval from "./pages/admin/MemberApproval";
-import MemberType from "./pages/admin/MemberType";
+import MemberType from "./pages/member/MemberType.jsx";
 import MaintenanceDetail from "./pages/admin/MaintenanceDetail";
-import ExpenceForm from "./pages/admin/ExpenceForm";
+import ExpenceForm from "./pages/expense/ExpenceForm.jsx";
 import BillReport from "./pages/admin/BillReport";
-import ExpenceDetail from "./pages/admin/ExpenceDetail";
-import CalculateMaitenance from "./pages/admin/CalculateMaitenance";
-import AdminOtp from "./pages/admin/AdminOtp";
+import CalculateMaitenance from "./pages/maintenance/CalculateMaitenance.jsx";
+import AdminOtp from "./pages/admin/admin auth/AdminOtp.jsx";
 import SocietyMemberOtp from "./pages/member/SocietyMemberOtp";
 import PublicRoute from "./Protect_Routes/PublicRoute";
 import PrivateRoute from "./Protect_Routes/PrivateRoute";
-import Notice from "./pages/admin/Notice.jsx";
-import AddMaitenancePayment from "./pages/admin/AddMaitenancePayment.jsx";
-import AddSocietyStaff from "./component/AddSocietyStaff.jsx";
-import SocietyStaffInfo from "./component/SocietyStaffInfo.jsx";
-import ComplaintList from "./component/ComplaintList.jsx";
+import Notice from "./pages/notice/Notice.jsx";
+import AddMaitenancePayment from "./pages/maintenance/AddMaitenancePayment.jsx";
+import AddSocietyStaff from "./pages/staff/AddSocietyStaff.jsx";
+import SocietyStaffInfo from "./pages/staff/SocietyStaffInfo";
+import ComplaintList from "./pages/complaint/ComplaintList.jsx";
 import Profile from "./pages/member/Profile.jsx";
 import MemberMaitenancePaymet from "./pages/member/MemberMaitenancePaymet.jsx";
 import ViewComplaint from "./pages/member/ViewComplaint.jsx";
 import MemberNotice from "./pages/member/memberNotice.jsx";
 import SocietyRules from "./pages/member/SocietyRules.jsx";
+import AllAdminExpenses from "./pages/expense/AllAdminExpenses.jsx";
+import AllMemberExpenses from "./pages/expense/AllMemberExpenses.jsx";
+import ForgetPassword from "./component/ForgetPassword.jsx";
+import VerifyForgetPasswordOtp from "./component/VerifyForgetPasswordOtp.jsx";
+import ResetPassword from "./component/ResetPassword.jsx";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -66,24 +68,15 @@ const App = () => {
         { path: "addMaintenance", element: <AddMaitenancePayment /> },
         { path: "maintenanceDetail", element: <MaintenanceDetail /> },
         { path: "expenseForm", element: <ExpenceForm /> },
-        { path: "expenseDetail", element: <ExpenceDetail /> },
+        { path: "admin-expenses", element: <AllAdminExpenses /> },
         { path: "billReport", element: <BillReport /> },
         { path: "notice", element: <Notice /> },
-        {
-          path: "complaintList",
-          element: <ComplaintList />,
-        },
-        {
-          path: "addStaff",
-          element: <AddSocietyStaff />,
-        },
-        {
-          path: "staffDetail",
-          element: <SocietyStaffInfo />,
-        },
+        { path: "complaintList", element: <ComplaintList /> },
+        { path: "addStaff", element: <AddSocietyStaff /> },
+        { path: "staffDetail", element: <SocietyStaffInfo /> },
         //member
         { path: "member-maitenance", element: <MemberMaitenancePaymet /> },
-        { path: "expenses", element: <Expenses /> },
+        { path: "member-expenses", element: <AllMemberExpenses /> },
         { path: "complaint", element: <Complaint /> },
         { path: "view-complaint", element: <ViewComplaint /> },
         {
@@ -108,6 +101,7 @@ const App = () => {
         </PublicRoute>
       ),
     },
+
     {
       path: "/memberOtp",
       element: (
@@ -129,6 +123,30 @@ const App = () => {
       element: (
         <PublicRoute>
           <SocietyMemberForm />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/forget-password",
+      element: (
+        <PublicRoute>
+          <ForgetPassword />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/verifyOtp",
+      element: (
+        <PublicRoute>
+          <VerifyForgetPasswordOtp />
+        </PublicRoute>
+      ),
+    },
+    {
+      path: "/resetpassword",
+      element: (
+        <PublicRoute>
+          <ResetPassword />
         </PublicRoute>
       ),
     },

@@ -79,8 +79,8 @@ const Login = () => {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-200">
-      <div className="bg-white shadow-xl rounded-2xl p-10 w-full max-w-md border border-gray-100">
+    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-blue-50 to-blue-200 px-4">
+      <div className="bg-white shadow-xl rounded-2xl p-6 sm:p-10 w-full max-w-md border border-gray-100">
         <h2 className="text-3xl font-extrabold text-center text-gray-800 mb-2">
           🏢 Smart Society
         </h2>
@@ -179,6 +179,12 @@ const Login = () => {
           >
             Register
           </a>
+        </p>
+        <p
+          onClick={() => navigate("/forget-password")}
+          className="text-center text-sm text-blue-500 hover:underline cursor-pointer hover:text-blue-700"
+        >
+          Forget Password
         </p>
       </div>
     </div>

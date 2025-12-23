@@ -91,15 +91,15 @@ const MemberType = () => {
   };
 
   return (
-    <div className="p-6 h-screen overflow-auto">
+    <div className="p-3 sm:p-6 h-screen overflow-auto">
       {/* 🔍 SEARCH */}
       <h2 className="text-2xl font-bold text-gray-800 mb-4">Search Member</h2>
 
-      <div className="flex gap-4 mb-6">
+      <div className="flex flex-col sm:flex-row gap-4 mb-6">
         <input
           type="text"
           placeholder="Enter Flat No or Shop No..."
-          className="p-2 border rounded-lg w-72"
+          className="p-2 border rounded-lg w-full sm:w-72"
           value={searchText}
           onChange={(e) => setSearchText(e.target.value)}
         />
@@ -107,7 +107,7 @@ const MemberType = () => {
 
       {/* 🔎 SEARCH RESULT */}
       {searchResult && searchResult !== "not_found" && (
-        <div className="mb-6 bg-white shadow-md rounded-xl p-4 border w-[340px]">
+        <div className="mb-6 bg-white shadow-md rounded-xl p-4 border w-full sm:w-[340px]">
           <h3 className="font-bold text-lg mb-2">Member Details</h3>
 
           {searchResult.memberType === "Flat" &&
@@ -149,10 +149,13 @@ const MemberType = () => {
       )}
 
       {/* 🔘 CATEGORY BUTTONS (STYLE SAME) */}
-      <div className="flex gap-3 mb-6 sticky top-0 bg-gray-100 z-10 p-2">
+      <div
+        className="flex gap-3 mb-6 sticky top-0 bg-gray-100 z-10 p-2 
+overflow-x-auto whitespace-nowrap"
+      >
         <button
           onClick={() => setActiveCategory("FlatOwner")}
-          className={`px-4 py-2 rounded ${
+          className={`px-4 py-2  rounded text-sm sm:text-base shrink-0 rounded ${
             activeCategory === "FlatOwner"
               ? "bg-blue-600 text-white"
               : "bg-gray-200"
@@ -196,7 +199,7 @@ const MemberType = () => {
       </div>
 
       {/* 🔵 MEMBERS GRID */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-3 sm:gap-4">
         {getActiveMembers().map((item) =>
           activeCategory === "FlatOwner" ? (
             <FlatOwnerCard

@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useRef } from "react";
+
 import axios from "axios";
 
 const ExpenceForm = () => {
@@ -12,6 +13,8 @@ const ExpenceForm = () => {
     buildingCode: "",
     billProof: null, // ✅ initialize as null
   });
+
+  const fileRef = useRef(null);
 
   const handleChange = (e) => {
     const { name, value, files } = e.target;
@@ -64,6 +67,7 @@ const ExpenceForm = () => {
           buildingCode: "",
           billProof: null,
         });
+        fileRef.current.value = "";
       }
     } catch (error) {
       console.log(error);
@@ -191,6 +195,7 @@ const ExpenceForm = () => {
             Bill Proof
           </label>
           <input
+            ref={fileRef}
             type="file"
             name="billProof"
             onChange={handleChange}

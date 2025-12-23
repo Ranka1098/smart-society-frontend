@@ -76,7 +76,7 @@ const SocietyMemberForm = () => {
           flatOwnerPhoneNumber: member.flatOwnerPhoneNumber,
           flatRenterName: member.flatRenterName,
           primaryPhone: member.primaryPhone,
-          flatRenterJoining: member.flatRenterJoining,
+          dateOfJoiningFlat: member.flatRenterJoining,
           password: member.password,
           memberInFamily: member.memberInFamily,
           men: member.men,
@@ -113,7 +113,7 @@ const SocietyMemberForm = () => {
           shopOwnerPhoneNumber: member.shopOwnerPhoneNumber,
           shopRenterName: member.shopRenterName,
           primaryPhone: member.primaryPhone,
-          shopRenterJoining: member.shopRenterJoining,
+          dateOfJoiningShop: member.shopRenterJoining,
           password: member.password,
         };
       }
@@ -522,7 +522,7 @@ const SocietyMemberForm = () => {
             {/*----------------------------------- shop owner form start ----------------------------------- */}
             {member.shopStatus === "Owner" && (
               <div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="font-semibold">Building Code</label>
                     <input
@@ -607,7 +607,7 @@ const SocietyMemberForm = () => {
             {/* --------------------------------------------shop Rent form start---------------------------------- */}
             {member.shopStatus === "Rent" && (
               <div>
-                <div className="grid grid-cols-2 gap-4">
+                <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
                   <div>
                     <label className="font-semibold">Building Code</label>
                     <input
@@ -679,10 +679,10 @@ const SocietyMemberForm = () => {
                     </label>
                     <input
                       type="text"
-                      name="shopRenterPhoneNumber"
+                      name="primaryPhone"
                       required
                       placeholder="Renter Phone"
-                      value={member.shopRenterPhoneNumber}
+                      value={member.primaryPhone}
                       onChange={handleChange}
                       className="w-full border p-2 rounded"
                     />

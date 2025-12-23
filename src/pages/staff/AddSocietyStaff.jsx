@@ -72,11 +72,12 @@ const AddSocietyStaff = () => {
   };
 
   return (
-    <div className="max-w-lg mx-auto p-6 bg-white shadow-lg rounded mt-1">
-      <h2 className="text-2xl font-bold  text-center text-blue-600">
+    <div className="max-w-lg w-full mx-auto p-6 bg-white shadow-lg rounded ">
+      <h2 className="text-2xl font-bold text-center text-blue-600 mb-4">
         Add Society Staff
       </h2>
-      <form key={formKey} onSubmit={handleSubmit} className="space-y-3">
+
+      <form key={formKey} onSubmit={handleSubmit} className="space-y-4">
         {/* Role */}
         <div className="flex flex-col">
           <label className="mb-1 font-semibold text-gray-700">
@@ -86,7 +87,7 @@ const AddSocietyStaff = () => {
             name="role"
             value={staff.role}
             onChange={handleChange}
-            className="border rounded p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none w-full"
             required
           >
             <option value="">Select Role</option>
@@ -94,6 +95,7 @@ const AddSocietyStaff = () => {
             <option value="Cleaner">Cleaner</option>
           </select>
         </div>
+
         {/* Name */}
         <div className="flex flex-col">
           <label className="mb-1 font-semibold text-gray-700">
@@ -105,10 +107,12 @@ const AddSocietyStaff = () => {
             value={staff.name}
             onChange={handleChange}
             placeholder="Enter full name"
-            className="border rounded p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none w-full"
             required
           />
         </div>
+
+        {/* Joining Date */}
         <div className="flex flex-col">
           <label className="mb-1 font-semibold text-gray-700">
             Joining Date
@@ -118,10 +122,11 @@ const AddSocietyStaff = () => {
             name="joiningDate"
             value={staff.joiningDate}
             onChange={handleChange}
-            className="border rounded p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none w-full"
             required
           />
         </div>
+
         {/* Phone */}
         <div className="flex flex-col">
           <label className="mb-1 font-semibold text-gray-700">
@@ -133,7 +138,7 @@ const AddSocietyStaff = () => {
             value={staff.phone}
             onChange={handleChange}
             placeholder="Enter phone number"
-            className="border rounded p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none w-full"
             required
           />
         </div>
@@ -148,7 +153,7 @@ const AddSocietyStaff = () => {
             value={staff.address}
             onChange={handleChange}
             placeholder="Enter address"
-            className="border rounded p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none"
+            className="border rounded-lg p-2 focus:ring-2 focus:ring-blue-400 focus:outline-none w-full resize-none"
             required
           />
         </div>
@@ -163,7 +168,7 @@ const AddSocietyStaff = () => {
             name="workerIdProof"
             onChange={handleChange}
             accept=".pdf,.jpg,.jpeg,.png"
-            className="border rounded p-1"
+            className="border rounded-lg p-2 w-full"
           />
         </div>
 
@@ -177,7 +182,7 @@ const AddSocietyStaff = () => {
             name="workerPhoto"
             onChange={handleChange}
             accept=".jpg,.jpeg,.png"
-            className="border rounded p-1"
+            className="border rounded-lg p-2 w-full"
           />
         </div>
 

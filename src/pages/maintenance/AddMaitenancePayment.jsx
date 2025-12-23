@@ -25,7 +25,7 @@ const AddMaitenancePayment = ({ onSuccess }) => {
       const res = await axios.post(
         "http://localhost:5000/addMemberMaitenancePayment",
         {
-          no: Number(form.no),
+          no: form.no.trim(),
           amount: Number(form.amount),
           month: form.month,
           paidDate: form.paidDate,
@@ -63,7 +63,7 @@ const AddMaitenancePayment = ({ onSuccess }) => {
   };
 
   return (
-    <div className="max-w-md mx-auto mt-5 bg-white p-8 rounded-2xl shadow-xl">
+    <div className="max-w-md mx-auto  bg-white p-8 rounded-2xl shadow-xl">
       <h2 className="text-2xl font-bold text-gray-800 mb-6 text-center">
         Add Maintenance Payment
       </h2>
@@ -75,7 +75,7 @@ const AddMaitenancePayment = ({ onSuccess }) => {
             Flat/Shop No
           </label>
           <input
-            type="number"
+            type="text"
             name="no"
             value={form.no}
             onChange={handleChange}

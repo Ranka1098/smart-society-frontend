@@ -3,6 +3,13 @@ import React from "react";
 import { FaHome, FaPhoneAlt, FaUserTie, FaTrash } from "react-icons/fa";
 
 const FlatRenterCard = ({ item, onDelete }) => {
+  const formatDate = (dateString) => {
+    if (!dateString) return "N/A";
+    const date = new Date(dateString);
+    return `${String(date.getDate()).padStart(2, "0")}/${String(
+      date.getMonth() + 1
+    ).padStart(2, "0")}/${date.getFullYear()}`;
+  };
   // 🔴 DELETE MEMBER
   const deleteMember = async () => {
     const confirmAction = window.confirm(
@@ -27,43 +34,65 @@ const FlatRenterCard = ({ item, onDelete }) => {
   };
 
   return (
-    <div className="relative p-5 rounded-xl shadow-md bg-white border">
+    <div className="relative p-3 sm:p-5 rounded-xl shadow-md bg-white border">
       {/* 🔴 DELETE BUTTON */}
       <button
         onClick={deleteMember}
-        className="absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full
-          text-white bg-red-600 hover:bg-red-700 flex items-center gap-1"
+        className="absolute top-2 right-2 sm:top-3 sm:right-3 
+px-2 sm:px-3 py-1 
+text-[10px] sm:text-xs font-semibold 
+rounded-full text-white bg-red-600 hover:bg-red-700 
+flex items-center gap-1"
       >
         <FaTrash />
         Delete
       </button>
 
       {/* Header */}
-      <div className="flex items-center gap-3 mb-3">
-        <FaHome className="text-green-600 text-xl" />
-        <h3 className="text-lg font-bold text-gray-800">Flat Renter Details</h3>
+      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+        <FaHome className="text-green-600 text-lg sm:text-xl" />
+
+        <h3 className="text-base sm:text-lg font-bold text-gray-800">
+          Flat Renter Details
+        </h3>
       </div>
 
-      <p>
+      <p className="text-sm sm:text-base">
         <b>Flat No:</b> {item.flatNo || "N/A"}
       </p>
 
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <FaUserTie />
         <span>
           <b>Renter Name:</b> {item.flatRenterName || "N/A"}
         </span>
       </p>
 
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <FaPhoneAlt />
         <span>
-          <b>Phone:</b> {item.primaryPhone || "N/A"}
+          <b>Phone No:</b> {item.primaryPhone || "N/A"}
         </span>
       </p>
 
-      <p>
+      <p className="flex items-center gap-2 text-sm sm:text-base">
+        <FaUserTie />
+        <span>
+          <b>Flat Owner Name:</b> {item.flatOwnerName || "N/A"}
+        </span>
+      </p>
+      <p className="flex items-center gap-2 text-sm sm:text-base">
+        <FaPhoneAlt />
+        <span>
+          <b>Flat Owner Phone No:</b> {item.flatOwnerPhoneNumber || "N/A"}
+        </span>
+      </p>
+
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <b>Status:</b> {item.status || "N/A"}
+      </p>
+      <p className="flex items-center gap-2 text-sm sm:text-base">
+        <b>DateOfJoinigFlat:</b> {formatDate(item.dateOfJoiningFlat)}
       </p>
     </div>
   );

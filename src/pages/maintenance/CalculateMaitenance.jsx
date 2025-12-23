@@ -31,7 +31,9 @@ const CalculateMaintenance = () => {
   useEffect(() => {
     const fetchAllMembers = async () => {
       try {
-        const res = await axios.get("http://localhost:5000/allMembersList");
+        const res = await axios.get("http://localhost:5000/allMembersList", {
+          withCredentials: true,
+        });
 
         const data = res.data.members.map((m) => ({
           id: m._id,
@@ -129,11 +131,13 @@ const CalculateMaintenance = () => {
 
       {calculated && (
         <>
-          <h2 className="text-xl font-bold my-2 text-center">
+          <h2 className="text-md md:text-xl font-bold my-2 text-center">
             Maintenance List for {formatMonth(month)}
           </h2>
           {/* ✅ FLATS TABLE */}
-          <h3 className="text-lg font-bold  mb-2">🏠 Flats</h3>
+          <h3 className="text-lg font-bold  mb-2">
+            🏠 Flats <span> = {flats.length}</span>
+          </h3>
           <table className="w-full border mb-6">
             <thead className="bg-gray-200">
               <tr>
@@ -155,7 +159,9 @@ const CalculateMaintenance = () => {
             </tbody>
           </table>
           {/* ✅ SHOPS TABLE */}
-          <h3 className="text-lg font-bold mb-2">🏪 Shops</h3>
+          <h3 className="text-lg font-bold mb-2">
+            🏪 Shops <span> = {shops.length}</span>
+          </h3>
           <table className="w-full border mb-6">
             <thead className="bg-gray-200">
               <tr>

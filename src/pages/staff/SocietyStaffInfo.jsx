@@ -1,6 +1,6 @@
 import axios from "axios";
 import { useEffect, useState } from "react";
-import { FaTrash, FaEdit } from "react-icons/fa"; // icons
+import { FaTrash } from "react-icons/fa"; // icons
 
 const SocietyStaffInfo = () => {
   const [staffs, setStaff] = useState([]);
@@ -20,7 +20,6 @@ const SocietyStaffInfo = () => {
       await axios.delete(`http://localhost:5000/deleteStaffMember/${id}`, {
         withCredentials: true,
       });
-      // Update state after deletion
       setStaff(staffs.filter((s) => s._id !== id));
     } catch (err) {
       alert(err.response?.data?.message || "Error deleting staff");
@@ -28,24 +27,24 @@ const SocietyStaffInfo = () => {
   };
 
   return (
-    <div className="p-6 max-w-5xl mx-auto space-y-6">
+    <div className="p-4 md:p-6 max-w-6xl mx-auto space-y-6">
       <h2 className="text-3xl font-bold mb-6 text-center text-blue-600">
         Society Staff Details
       </h2>
 
-      <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {staffs.map((staff) => (
           <div
             key={staff._id}
-            className="relative bg-white rounded-xl shadow-lg border hover:shadow-2xl transition duration-300"
+            className="relative bg-white rounded-xl shadow-md hover:shadow-xl transition duration-300 border overflow-hidden"
           >
-            {/* Top-right buttons */}
-            <div className="absolute top-2 right-2 flex space-x-2">
+            {/* Top-right delete button */}
+            <div className="absolute top-2 right-2 flex space-x-2 z-10">
               <button
                 onClick={() => handleDelete(staff._id)}
-                className="p-1 text-red-600 hover:text-red-800"
+                className="p-1 text-red-600 hover:text-red-800 transition"
               >
-                <FaTrash />
+                <FaTrash size={16} />
               </button>
             </div>
 
@@ -57,12 +56,12 @@ const SocietyStaffInfo = () => {
                   "/"
                 )}`}
                 alt={staff.workerName}
-                className="w-24 h-24 rounded-full object-cover border-2 border-blue-500"
+                className="w-24 h-24 sm:w-28 sm:h-28 rounded-full object-cover border-2 border-blue-500"
               />
-              <p className="mt-3 font-semibold text-lg text-blue-600">
+              <p className="mt-3 font-semibold text-lg text-blue-600 text-center">
                 {staff.role}
               </p>
-              <p className="text-gray-500 text-sm mt-1">
+              <p className="text-gray-500 text-sm mt-1 text-center">
                 Joined:{" "}
                 {new Date(staff.joiningDate).toLocaleDateString("en-IN")}
               </p>
@@ -70,18 +69,18 @@ const SocietyStaffInfo = () => {
 
             {/* Details */}
             <div className="p-4 space-y-2 text-gray-700 text-sm">
-              <p className="font-semibold text-md">
+              <p className="text-sm sm:text-base">
                 <span className="font-semibold">Name:</span> {staff.workerName}
               </p>
-              <p>
+              <p className="text-sm sm:text-base">
                 <span className="font-semibold">Address:</span>{" "}
                 {staff.workerAddress}
               </p>
-              <p>
+              <p className="text-sm sm:text-base">
                 <span className="font-semibold">Phone:</span>{" "}
                 {staff.workerPhoneNumber}
               </p>
-              <p>
+              <p className="text-sm sm:text-base">
                 <span className="font-semibold">Proof:</span>{" "}
                 <a
                   href={`http://localhost:5000/${staff.workerIdProof.replace(

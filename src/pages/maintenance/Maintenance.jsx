@@ -99,39 +99,36 @@ const Maintenance = () => {
         Maintenance Summary
       </h1>
 
-      {/* ✅ SUMMARY CARDS */}
+      {/* ✅ SUMMARY CARDS (responsive) */}
       <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4 mb-6">
         {cards.map((c, i) => (
-          <div key={i} className="bg-white p-4 rounded-xl shadow text-center">
+          <div key={i} className="bg-white p-4 shadow text-center">
             <p className="text-gray-600">{c.title}</p>
             <p className="font-bold text-lg">{c.value}</p>
           </div>
         ))}
       </div>
 
-      {/* ✅ TOP CONTROLS */}
-      <div className="flex flex-wrap  gap-4 mb-6">
-        {/* Month */}
+      {/* ✅ TOP CONTROLS (responsive) */}
+      <div className="flex flex-col sm:flex-row flex-wrap gap-4 mb-6">
         <input
           type="month"
           value={filterMonth}
           onChange={(e) => setFilterMonth(e.target.value)}
-          className="border p-2 rounded-lg"
+          className="border p-2 rounded-lg w-full sm:w-auto"
         />
 
-        {/* Search Flat / Shop No */}
         <input
           type="text"
           placeholder="Flat / Shop No"
           value={searchNo}
           onChange={(e) => setSearchNo(e.target.value)}
-          className="border p-2 rounded-lg"
+          className="border p-2 rounded-lg w-full sm:w-auto"
         />
       </div>
 
-      {/* ✅ FILTER BUTTONS */}
-      <div className="flex flex-wrap gap-4 mb-6">
-        {/* Type */}
+      {/* ✅ FILTER BUTTONS (responsive) */}
+      <div className="grid grid-cols-3  gap-4 mb-6">
         {["All", "F", "S"].map((t) => (
           <button
             key={t}
@@ -144,7 +141,6 @@ const Maintenance = () => {
           </button>
         ))}
 
-        {/* Status */}
         {["All", "Paid", "Pending"].map((s) => (
           <button
             key={s}
@@ -158,11 +154,9 @@ const Maintenance = () => {
         ))}
       </div>
 
-      {/* ✅ TABLE */}
-      {/* ✅ TABLE WRAPPER */}
-      <div className="bg-white rounded-xl shadow border max-h-[65vh] overflow-y-auto">
-        <table className="w-full border-collapse">
-          {/* ✅ FIXED HEADER */}
+      {/* ✅ TABLE (responsive) */}
+      <div className="bg-white shadow border max-h-[65vh] overflow-x-auto overflow-y-auto">
+        <table className="w-full min-w-[700px] border-collapse">
           <thead className="bg-gray-200 sticky top-0 z-10">
             <tr>
               <th className="border p-3">Flat / Shop No</th>
@@ -175,20 +169,17 @@ const Maintenance = () => {
               <th className="border p-3">Payment Mode</th>
             </tr>
           </thead>
-
-          {/* ✅ BODY (NO HACK) */}
           <tbody>
             {sortedData.length ? (
               sortedData.map((row, i) => (
                 <tr
                   key={i}
-                  className={`text-center hover:bg-gray-50 transition
-    ${
-      row.residencyStatus === "Vacant" || row.residencyStatus === "Inactive"
-        ? "opacity-50 blur-[1px]"
-        : ""
-    }
-  `}
+                  className={`text-center hover:bg-gray-50 transition ${
+                    row.residencyStatus === "Vacant" ||
+                    row.residencyStatus === "Inactive"
+                      ? "opacity-50 blur-[1px]"
+                      : ""
+                  }`}
                 >
                   <td className="border p-3">{row.No}</td>
                   <td className="border p-3">{row.memberName}</td>

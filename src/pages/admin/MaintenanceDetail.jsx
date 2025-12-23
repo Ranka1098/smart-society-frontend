@@ -1,5 +1,5 @@
 import React from "react";
-import Maintenance from "../member/Maintenance";
+import Maintenance from "../maintenance/Maintenance";
 
 const MaintenanceDetail = () => {
   return (

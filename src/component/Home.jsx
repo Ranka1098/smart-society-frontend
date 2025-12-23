@@ -57,7 +57,7 @@ const Home = () => {
   }, [isMemberLoggedIn, isAdminLoggedIn, location.pathname]);
 
   return (
-    <div className="h-screen flex flex-col overflow-hidden">
+    <div className="h-screen flex flex-col ">
       {/* Navbar */}
       <Navbar setSidebarOpen={setSidebarOpen} />
 
@@ -69,7 +69,7 @@ const Home = () => {
         />
 
         {/* Main Content */}
-        <div className="flex-1 bg-gray-100 relative overflow-hidden">
+        <div className="flex-1 bg-gray-100 relative overflow-y-auto">
           <Outlet />
 
           {!isChildRoute && isAdminLoggedIn && (

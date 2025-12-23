@@ -55,6 +55,9 @@ const Navbar = ({ setSidebarOpen }) => {
   return (
     <nav className="w-full bg-blue-600 text-white px-6 py-3 flex items-center justify-between">
       {/* ☰ Mobile menu */}
+      <h1 className="hidden md:block text-xl sm:text-2xl font-bold">
+        🏢 SmartSociety
+      </h1>
       <button
         className="md:hidden"
         onClick={() => setSidebarOpen((prev) => !prev)}
@@ -62,7 +65,7 @@ const Navbar = ({ setSidebarOpen }) => {
         <HiOutlineMenuAlt3 size={28} />
       </button>
       <h1 className="text-xl sm:text-2xl font-bold">🏡 Acacia Building</h1>
-      ...
+      <p>...</p>
     </nav>
   );
 };

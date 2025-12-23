@@ -41,29 +41,36 @@ const ShopRenterCard = ({ item, onDelete }) => {
   };
 
   return (
-    <div className="relative p-5 rounded-xl shadow-md border border-gray-200 bg-white">
+    <div className="relative p-3 sm:p-5 rounded-xl shadow-md border border-gray-200 bg-white">
       {/* 🔴 DELETE BUTTON */}
       <button
         onClick={deleteMember}
-        className="absolute top-3 right-3 px-3 py-1 text-xs font-semibold rounded-full text-white bg-red-600 hover:bg-red-700 flex items-center gap-1"
+        className="absolute top-2 right-2 sm:top-3 sm:right-3 
+px-2 sm:px-3 py-1 
+text-[10px] sm:text-xs font-semibold 
+rounded-full text-white bg-red-600 hover:bg-red-700 
+flex items-center gap-1"
       >
         <FaTrash />
         Delete
       </button>
 
       {/* Header */}
-      <div className="flex items-center gap-3 mb-3">
-        <FaStore className="text-orange-600 text-xl" />
-        <h3 className="text-lg font-bold text-gray-800">Shop Renter Details</h3>
+      <div className="flex items-center gap-2 sm:gap-3 mb-2 sm:mb-3">
+        <FaStore className="text-orange-600 text-lg sm:text-xl" />
+
+        <h3 className="text-base sm:text-lg font-bold text-gray-800">
+          Shop Renter Details
+        </h3>
       </div>
 
       {/* Shop No */}
-      <p>
+      <p className="text-sm sm:text-base">
         <b>Shop No:</b> {item.shopNo || "N/A"}
       </p>
 
       {/* Renter Name */}
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <FaUserTie />
         <span>
           <b>Renter Name:</b> {item.shopRenterName || "N/A"}
@@ -71,7 +78,7 @@ const ShopRenterCard = ({ item, onDelete }) => {
       </p>
 
       {/* Renter Phone */}
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <FaPhoneAlt />
         <span>
           <b>Renter Phone:</b> {item.primaryPhone || "N/A"}
@@ -79,7 +86,7 @@ const ShopRenterCard = ({ item, onDelete }) => {
       </p>
 
       {/* Owner Name */}
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <FaUserTie />
         <span>
           <b>Owner Name:</b> {item.shopOwnerName || "N/A"}
@@ -87,7 +94,7 @@ const ShopRenterCard = ({ item, onDelete }) => {
       </p>
 
       {/* Owner Phone */}
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <FaPhoneAlt />
         <span>
           <b>Owner Phone:</b> {item.shopOwnerPhoneNumber || "N/A"}
@@ -95,7 +102,7 @@ const ShopRenterCard = ({ item, onDelete }) => {
       </p>
 
       {/* Status */}
-      <p className="flex items-center gap-2">
+      <p className="flex items-center gap-2 text-sm sm:text-base">
         <FaDoorOpen />
         <span>
           <b>Status:</b> {item.status || "N/A"}
@@ -103,8 +110,8 @@ const ShopRenterCard = ({ item, onDelete }) => {
       </p>
 
       {/* Date of Joining */}
-      <p className="flex items-center gap-2">
-        <b>Date of Joining:</b> {formatDate(item.dateOfJoiningFlat)}
+      <p className="text-sm sm:text-base">
+        <b>Date of Joining Shop:</b> {formatDate(item.dateOfJoiningShop)}
       </p>
     </div>
   );

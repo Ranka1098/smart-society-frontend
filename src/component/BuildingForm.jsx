@@ -77,8 +77,8 @@ const BuildingForm = () => {
   };
 
   return (
-    <div className="h-screen flex justify-center items-center bg-gradient-to-r from-blue-100 to-blue-200">
-      <div className="w-[450px] bg-white shadow-2xl rounded-2xl p-8">
+    <div className="min-h-screen flex justify-center items-center bg-gradient-to-r  from-blue-100 to-blue-200 px-4 sm:px-6">
+      <div className="w-full m-2 max-w-sm sm:max-w-md md:max-w-lg bg-white shadow-2xl rounded-2xl p-5 sm:p-7 md:p-8">
         <button
           type="button"
           onClick={() => navigate("/register")}
@@ -86,22 +86,22 @@ const BuildingForm = () => {
         >
           Back
         </button>
-        <h2 className="font-bold text-2xl text-center text-gray-800 ">
+        <h2 className="font-bold text-xl sm:text-2xl text-center text-gray-800">
           🏢 Create Building
         </h2>
-        <p className="text-gray-500 text-sm text-center mb-2">
+        <p className="text-gray-500 text-xs sm:text-sm text-center mb-3">
           Fill the building details. After submit you'll get a unique building
           code.
         </p>
 
-        <form onSubmit={handleSubmit} className="flex flex-col gap-1">
+        <form onSubmit={handleSubmit} className="flex flex-col gap-2 sm:gap-3">
           {/* Admin */}
           <div className="flex flex-col">
             <label className="font-semibold">Admin Name</label>
             <input
               type="text"
               placeholder="Enter Admin Name..."
-              className={`border p-2 rounded focus:outline-none focus:ring-2 ${
+              className={`border px-3 py-2 sm:py-2.5 rounded focus:outline-none focus:ring-2 text-sm sm:text-base ${
                 error.admin
                   ? "border-red-500 focus:ring-red-300"
                   : "focus:ring-blue-300"
@@ -154,7 +154,7 @@ const BuildingForm = () => {
             <button
               type="button"
               onClick={() => setShowPassword((prev) => !prev)}
-              className="absolute right-3 top-8 text-gray-600 hover:text-gray-800"
+              className="absolute right-3 top-9 sm:top-10 text-gray-600 hover:text-gray-800"
             >
               {showPassword ? <FaEye size={20} /> : <FaEyeSlash size={20} />}
             </button>
@@ -227,7 +227,7 @@ const BuildingForm = () => {
           <div className="flex gap-3 mt-4">
             <button
               type="submit"
-              className="flex-1 bg-blue-500 text-white py-2 rounded-lg hover:bg-blue-600 transition shadow"
+              className="flex-1 bg-blue-500 text-white py-2.5 sm:py-3 rounded-lg text-sm sm:text-base hover:bg-blue-600 transition shadow"
             >
               Submit
             </button>

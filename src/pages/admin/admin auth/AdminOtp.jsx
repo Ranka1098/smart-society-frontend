@@ -1,5 +1,5 @@
 import { useLocation, useNavigate } from "react-router-dom";
-import Timer from "../../component/Timer";
+import Timer from "../../../component/Timer";
 import { useEffect, useRef, useState } from "react";
 import axios from "axios";
 
@@ -96,13 +96,20 @@ const AdminOtp = () => {
   };
 
   return (
-    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4">
-      <div className="bg-white p-8 rounded-lg shadow-lg w-full max-w-md">
-        <h1 className="text-2xl font-bold text-center text-gray-800 mb-6">
+    <div className="min-h-screen flex flex-col items-center justify-center bg-gray-100 px-4 sm:px-6">
+      <div className="bg-white p-8 sm:p-7 md:p-8 rounded-lg shadow-lg w-full max-w-xs sm:max-w-md">
+        <button
+          type="button"
+          onClick={() => navigate("/register")}
+          className="text-blue-600 hover:underline"
+        >
+          Back
+        </button>
+        <h1 className="text-xl sm:text-2xl font-bold text-center text-gray-800 mb-5 sm:mb-6">
           Verify OTP
         </h1>
 
-        <div className="flex justify-between gap-3">
+        <div className="flex justify-center gap-2 sm:gap-3">
           {otpfiled.map((value, index) => (
             <input
               key={index}
@@ -113,7 +120,20 @@ const AdminOtp = () => {
                 inputRef.current[index] = currentInput;
               }}
               onKeyDown={(e) => handleKeydown(e, index)}
-              className="w-12 h-12 border border-gray-300 rounded-md text-center text-xl font-semibold focus:outline-none focus:ring-2 focus:ring-purple-600 transition"
+              className="
+  w-10 h-10 
+  sm:w-12 sm:h-12 
+  md:w-14 md:h-14 
+  border border-gray-300 
+  rounded-md 
+  text-center 
+  text-lg sm:text-xl 
+  font-semibold 
+  focus:outline-none 
+  focus:ring-2 
+  focus:ring-purple-600 
+  transition
+"
             />
           ))}
         </div>

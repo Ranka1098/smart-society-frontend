@@ -1,15 +1,35 @@
-import React, { useState, useMemo } from "react";
-
+import { useState, useMemo, useEffect } from "react";
+import axios from "axios";
 const Expenses = ({ data }) => {
   const [selectedMonth, setSelectedMonth] = useState("All");
   const [selectedDate, setSelectedDate] = useState(""); // ✅ Single date filter
+  const [allExpenses, setAllExpenses] = useState([]);
+
+  useEffect(() => {
+    const getExpenses = async () => {
+      try {
+        const res = await axios.get("http://localhost:5000/getExpense", {
+          withCredentials: true,
+        });
+
+        if (res.status === 200 && res.data.success) {
+          setAllExpenses(res.data.expenses);
+          console.log("Expenses:", res.data.expenses);
+        }
+      } catch (error) {
+        console.error("Error fetching expenses:", error);
+      }
+    };
+
+    getExpenses();
+  }, []);
 
   // ----------------------------
   // Get unique months from data
   // ----------------------------
   const months = useMemo(() => {
     const monthSet = new Set();
-    data.forEach((item) => {
+    allExpenses.forEach((item) => {
       const date = new Date(item.billDate);
       const month = date.toLocaleString("en-IN", {
         month: "short",
@@ -21,13 +41,13 @@ const Expenses = ({ data }) => {
       "All",
       ...Array.from(monthSet).sort((a, b) => new Date(a) - new Date(b)),
     ];
-  }, [data]);
+  }, [allExpenses]);
 
   // ----------------------------
   // Filter data based on selected month & selected date
   // ----------------------------
   const filteredData = useMemo(() => {
-    return data.filter((item) => {
+    return allExpenses.filter((item) => {
       const date = new Date(item.billDate);
 
       // Month filter
@@ -43,7 +63,7 @@ const Expenses = ({ data }) => {
 
       return true;
     });
-  }, [data, selectedMonth, selectedDate]);
+  }, [allExpenses, selectedMonth, selectedDate]);
 
   // ----------------------------
   // Total Summary by Type (filtered data)
@@ -94,12 +114,12 @@ const Expenses = ({ data }) => {
       </h1>
 
       {/* --------------------- */}
-      {/* Top Filter Bar */}
+      {/* Top Filter Bar (responsive) */}
       {/* --------------------- */}
-      <div className="flex flex-col md:flex-row justify-end items-center mb-6 gap-4">
+      <div className="flex flex-col sm:flex-row justify-end items-start sm:items-center mb-6 gap-4 flex-wrap">
         {/* Month Filter */}
         <select
-          className="border px-4 py-2 rounded-lg"
+          className="border px-4 py-2 rounded-lg w-full sm:w-auto"
           value={selectedMonth}
           onChange={(e) => setSelectedMonth(e.target.value)}
         >
@@ -113,16 +133,16 @@ const Expenses = ({ data }) => {
         {/* Single Date Filter */}
         <input
           type="date"
-          className="border px-4 py-2 rounded-lg"
+          className="border px-4 py-2 rounded-lg w-full sm:w-auto"
           value={selectedDate}
           onChange={(e) => setSelectedDate(e.target.value)}
         />
       </div>
 
       {/* --------------------- */}
-      {/* Total Summary Cards */}
+      {/* Total Summary Cards (responsive) */}
       {/* --------------------- */}
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 mb-10">
         {typeCards.map((card, idx) => (
           <div
             key={idx}
@@ -135,10 +155,10 @@ const Expenses = ({ data }) => {
       </div>
 
       {/* --------------------- */}
-      {/* Expense Table */}
+      {/* Expense Table (responsive) */}
       {/* --------------------- */}
       <div className="bg-white shadow-md rounded-xl overflow-x-auto">
-        <table className="w-full border-collapse">
+        <table className="w-full min-w-[700px] border-collapse">
           <thead className="bg-gray-200 text-gray-700 text-sm">
             <tr>
               <th className="p-3 border">Expense Type</th>

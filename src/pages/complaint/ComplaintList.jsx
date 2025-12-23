@@ -5,7 +5,6 @@ const ComplaintList = () => {
   const [complaints, setComplaints] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  // 🔥 Fetch complaints
   const fetchComplaints = async () => {
     try {
       const res = await axios.get("http://localhost:5000/getAdminComplaints", {
@@ -19,7 +18,6 @@ const ComplaintList = () => {
     }
   };
 
-  // 🎯 Resolve complaint
   const markResolved = async (id) => {
     try {
       await axios.patch(
@@ -46,18 +44,18 @@ const ComplaintList = () => {
   }
 
   return (
-    <div className="bg-white shadow-md overflow-x-auto">
-      <table className="w-full border-collapse">
+    <div className="overflow-x-auto p-4 md:p-6 bg-white shadow-md rounded-lg">
+      <table className="min-w-[800px] md:min-w-full border-collapse w-full">
         <thead className="bg-gray-200 text-gray-700 text-sm">
           <tr>
-            <th className="p-3 border">Flat / Shop No</th>
-            <th className="p-3 border">Member Name</th>
-            <th className="p-3 border">Category</th>
-            <th className="p-3 border">Description</th>
-            <th className="p-3 border">Status</th>
-            <th className="p-3 border">Raised On</th>
-            <th className="p-3 border">Resolved On</th>
-            <th className="p-3 border">Action</th>
+            <th className="p-2 md:p-3 border">Flat / Shop No</th>
+            <th className="p-2 md:p-3 border">Member Name</th>
+            <th className="p-2 md:p-3 border">Category</th>
+            <th className="p-2 md:p-3 border">Description</th>
+            <th className="p-2 md:p-3 border">Status</th>
+            <th className="p-2 md:p-3 border">Raised On</th>
+            <th className="p-2 md:p-3 border">Resolved On</th>
+            <th className="p-2 md:p-3 border">Action</th>
           </tr>
         </thead>
 
@@ -70,35 +68,38 @@ const ComplaintList = () => {
             </tr>
           ) : (
             complaints.map((c) => (
-              <tr key={c._id} className="text-center text-sm hover:bg-gray-50">
-                <td className="p-3 border">{c.unitNo}</td>
-                <td className="p-3 border">{c.memberName}</td>
-                <td className="p-3 border">{c.category}</td>
-                <td className="p-3 border">{c.description}</td>
+              <tr
+                key={c._id}
+                className="text-center text-sm md:text-base hover:bg-gray-50 transition"
+              >
+                <td className="p-2 md:p-3 border">{c.unitNo}</td>
+                <td className="p-2 md:p-3 border">{c.memberName}</td>
+                <td className="p-2 md:p-3 border">{c.category}</td>
+                <td className="p-2 md:p-3 border">{c.description}</td>
 
                 <td
-                  className={`p-3 border font-semibold ${
+                  className={`p-2 md:p-3 border font-semibold ${
                     c.status === "resolved" ? "text-green-600" : "text-red-600"
                   }`}
                 >
                   {c.status}
                 </td>
 
-                <td className="p-3 border">
+                <td className="p-2 md:p-3 border">
                   {new Date(c.createdAt).toLocaleDateString("en-IN")}
                 </td>
 
-                <td className="p-3 border">
+                <td className="p-2 md:p-3 border">
                   {c.resolvedAt
                     ? new Date(c.resolvedAt).toLocaleDateString("en-IN")
                     : "—"}
                 </td>
 
-                <td className="p-3 border">
+                <td className="p-2 md:p-3 border">
                   {c.status === "pending" ? (
                     <button
                       onClick={() => markResolved(c._id)}
-                      className="bg-green-500 text-white px-3 py-1 rounded hover:bg-green-600"
+                      className="bg-green-500 text-white px-2 md:px-3 py-1 rounded hover:bg-green-600 transition"
                     >
                       Mark Resolved
                     </button>

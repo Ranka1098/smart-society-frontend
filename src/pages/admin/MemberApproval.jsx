@@ -86,7 +86,9 @@ const MemberApproval = () => {
           {members.map((member) => (
             <li
               key={member._id}
-              className="relative p-4 bg-white border shadow rounded-lg flex justify-between items-center"
+              className="relative p-4 bg-white border shadow rounded-lg 
+flex flex-col md:flex-row 
+md:justify-between md:items-center gap-4"
             >
               {/* BADGES TOP RIGHT */}
               <div className="absolute top-2 right-2 flex space-x-2">
@@ -199,16 +201,16 @@ const MemberApproval = () => {
               </div>
 
               {/* Action Buttons */}
-              <div className="space-x-2">
+              <div className="flex flex-col sm:flex-row gap-2 w-full md:w-auto">
                 <button
                   onClick={() => handleApprove(member._id)}
-                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700"
+                  className="px-4 py-2 bg-green-600 text-white rounded hover:bg-green-700 w-full sm:w-auto"
                 >
                   Approve
                 </button>
                 <button
                   onClick={() => handleReject(member._id)}
-                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700"
+                  className="px-4 py-2 bg-red-600 text-white rounded hover:bg-red-700 w-full sm:w-auto"
                 >
                   Reject
                 </button>
