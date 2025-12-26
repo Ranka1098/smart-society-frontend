@@ -164,6 +164,7 @@ const AllMemberExpenses = () => {
             <tr>
               <th className="p-3 border">Expense Type</th>
               <th className="p-3 border">Amount</th>
+              <th className="p-3 border">Paid To</th>
               <th className="p-3 border">Date</th>
               <th className="p-3 border">Mode</th>
               <th className="p-3 border">Remarks</th>
@@ -178,6 +179,7 @@ const AllMemberExpenses = () => {
               >
                 <td className="p-3 border">{row.billType}</td>
                 <td className="p-3 border">₹{row.amount}</td>
+                <td className="p-3 border">{row.paidTo}</td>
                 <td className="p-3 border">
                   {new Date(row.billDate).toLocaleDateString("en-IN", {
                     day: "2-digit",

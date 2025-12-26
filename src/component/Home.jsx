@@ -56,6 +56,31 @@ const Home = () => {
     }
   }, [isMemberLoggedIn, isAdminLoggedIn, location.pathname]);
 
+  // fcm token notification
+  useEffect(() => {
+    const saveToken = async () => {
+      const alreadySaved = localStorage.getItem("fcmTokenSaved");
+
+      if (alreadySaved) return; // 🚫 dubara request nahi
+
+      const token = await requestNotificationPermission();
+
+      if (token) {
+        await axios.post(
+          "http://localhost:5000/api/member/save-fcm-token",
+          { fcmToken: token },
+          { withCredentials: true }
+        );
+
+        localStorage.setItem("fcmTokenSaved", "true"); // ✅ mark saved
+      }
+    };
+
+    if (isMemberLoggedIn) {
+      saveToken();
+    }
+  }, [isMemberLoggedIn]);
+
   return (
     <div className="h-screen flex flex-col ">
       {/* Navbar */}

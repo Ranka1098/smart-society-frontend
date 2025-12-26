@@ -34,6 +34,8 @@ import AllMemberExpenses from "./pages/expense/AllMemberExpenses.jsx";
 import ForgetPassword from "./component/ForgetPassword.jsx";
 import VerifyForgetPasswordOtp from "./component/VerifyForgetPasswordOtp.jsx";
 import ResetPassword from "./component/ResetPassword.jsx";
+import Meeting from "./pages/meeting/Meeting.jsx";
+import MeetingDetail from "./pages/meeting/MeetingDetail.jsx";
 
 const App = () => {
   const appRouter = createBrowserRouter([
@@ -74,6 +76,8 @@ const App = () => {
         { path: "complaintList", element: <ComplaintList /> },
         { path: "addStaff", element: <AddSocietyStaff /> },
         { path: "staffDetail", element: <SocietyStaffInfo /> },
+        { path: "meeting", element: <Meeting /> },
+        { path: "meeting/:meetingId", element: <MeetingDetail /> },
         //member
         { path: "member-maitenance", element: <MemberMaitenancePaymet /> },
         { path: "member-expenses", element: <AllMemberExpenses /> },

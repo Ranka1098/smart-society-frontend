@@ -23,6 +23,7 @@ const LeftSideDashboard = ({ sidebarOpen, setSidebarOpen }) => {
     { name: "Calculate Maintenance", path: "calculateMaitenance" },
     { name: "Maintenance payment  Detail", path: "maintenanceDetail" },
     { name: "Add-Maintenance Payment", path: "addMaintenance" },
+    { name: "Society Meeting", path: "meeting" },
     { name: "Notice", path: "notice" },
     { name: "Add-staff", path: "addStaff" },
     { name: "Staff Detail", path: "staffDetail" },
